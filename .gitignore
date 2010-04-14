@@ -1,0 +1,7 @@
+__history
+dunit.ini
+*.dcu
+*.exe
+*.local
+*.identcache
+*.tvsconfig

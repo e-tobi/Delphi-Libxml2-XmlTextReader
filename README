@@ -1,0 +1,74 @@
+LibXml2-XmlTextReader wrapper class for Delphi
+==============================================
+
+This code is released under the MIT Licence - see the Copyright file.
+The libxml2 pascal-headers havee been borrowed from the "Libxml2 for pascal"
+project.
+
+See: http://sourceforge.net/projects/libxml2-pas/
+
+Introduction
+------------
+
+The TXmlTextReader class wraps the XmlTextReader interface of the libxml2
+library.
+
+See: http://xmlsoft.org/xmlreader.html
+
+The XmlTextReader way of reading XML is an alternative to using SAX or DOM.
+Thanks to libxml2 it's pretty fast and it's interface is easy to use. It's
+similar to .Net's XmlTextReader class.
+
+XML reading is done in one direction only, you can't jump backwards.
+
+
+Requierements
+-------------
+
+This version of TXmlTextReader is currently for Delphi 2009 / 2010 only. If you
+would like to use it for any other ObjectPascal environment, please let me know
+- it's just a bunch of #ifdef's to be added to take care of the correct
+string/pointer conversions.
+
+Besides this you will need the libxml2 dll's, which can be downloaded for
+Windows here:
+
+http://www.zlatkovic.com/libxml.en.html
+
+Example
+-------
+
+Assuming we have the following XML file:
+
+  <root>
+    <first something="foo" somethingElse="bar">
+    <second>Baz</second>
+  </root>
+
+The code for reading this file might look like this:
+
+  ...
+  reader := TXmlTextReader.Create('temp.xml');
+  try
+    reader.Read;
+    CheckEquals('root', reader.Name);
+    reader.Read; // #text because of indentation
+    reader.Read;
+    CheckEquals('first', reader.Name);
+    CheckEquals('foo', reader.GetAttribute('something'));
+    CheckEquals('bar', reader.GetAttribute('somethingElse'));
+    reader.Read; // #text because of indentation
+    reader.Read;
+    CheckEquals('second', reader.Name);
+    CheckEquals('Baz', reader.ReadString); // read 'ahead' element content
+    reader.Read; // #text
+    CheckEquals('Baz', reader.Value);
+    reader.Read;
+    reader.Read;
+    CheckFalse(reader.Read); // EOF!
+  finally
+    xmlFile.Free;
+  end;
+  ...
+
+For more samples take a look at the unit tests in XmlTextReaderTest.pas.

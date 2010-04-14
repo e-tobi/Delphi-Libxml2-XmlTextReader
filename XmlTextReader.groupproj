@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{98254902-8C9F-4C28-9724-D1EA9CE68366}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="XmlReaderTests.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="XmlReaderTests">
+			<MSBuild Projects="XmlReaderTests.dproj"/>
+		</Target>
+		<Target Name="XmlReaderTests:Clean">
+			<MSBuild Targets="Clean" Projects="XmlReaderTests.dproj"/>
+		</Target>
+		<Target Name="XmlReaderTests:Make">
+			<MSBuild Targets="Make" Projects="XmlReaderTests.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="XmlReaderTests"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="XmlReaderTests:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="XmlReaderTests:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
