@@ -28,7 +28,7 @@ interface
 
 uses
   libxml2,
-  xmlreader,
+  XmlTextReader,
   TestFrameWork,
   Classes,
   Windows,

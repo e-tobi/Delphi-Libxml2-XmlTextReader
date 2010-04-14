@@ -3,7 +3,7 @@
 			<ProjectGuid>{98254902-8C9F-4C28-9724-D1EA9CE68366}</ProjectGuid>
 		</PropertyGroup>
 		<ItemGroup>
-			<Projects Include="XmlReaderTests.dproj">
+			<Projects Include="XmlTextReaderTests.dproj">
 				<Dependencies/>
 			</Projects>
 		</ItemGroup>
@@ -14,23 +14,23 @@
 				<Default.Personality/>
 			</BorlandProject>
 		</ProjectExtensions>
-		<Target Name="XmlReaderTests">
-			<MSBuild Projects="XmlReaderTests.dproj"/>
+		<Target Name="XmlTextReaderTests">
+			<MSBuild Projects="XmlTextReaderTests.dproj"/>
 		</Target>
-		<Target Name="XmlReaderTests:Clean">
-			<MSBuild Targets="Clean" Projects="XmlReaderTests.dproj"/>
+		<Target Name="XmlTextReaderTests:Clean">
+			<MSBuild Targets="Clean" Projects="XmlTextReaderTests.dproj"/>
 		</Target>
-		<Target Name="XmlReaderTests:Make">
-			<MSBuild Targets="Make" Projects="XmlReaderTests.dproj"/>
+		<Target Name="XmlTextReaderTests:Make">
+			<MSBuild Targets="Make" Projects="XmlTextReaderTests.dproj"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="XmlReaderTests"/>
+			<CallTarget Targets="XmlTextReaderTests"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="XmlReaderTests:Clean"/>
+			<CallTarget Targets="XmlTextReaderTests:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="XmlReaderTests:Make"/>
+			<CallTarget Targets="XmlTextReaderTests:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
