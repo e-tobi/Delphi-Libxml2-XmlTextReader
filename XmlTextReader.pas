@@ -27,7 +27,7 @@ unit XmlTextReader;
 interface
 
 uses
-  windows,
+
   classes,
   sysutils,
   libxml2;
